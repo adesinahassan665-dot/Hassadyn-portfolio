@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LearnLoop | Concept E-Learning Platform by Hassan Adesina</title>
+<meta name="description" content="Concept e-learning platform interface: browse courses, filter by topic and track lesson progress. Designed and built by Hassan Adesina.">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070913;--bg2:#0e1222;--line:#1d2440;--tx:#f3f4fa;--mu:#a3abc4;--blue:#2563eb;--bright:#60a5fa;--vio:#8b6bff;--h:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;--b:'Figtree','Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--tx);font:400 1rem/1.6 var(--b);overflow-x:hidden}a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--bright);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1100px,100% - 2.5rem);margin-inline:auto}h1,h2,h3{font-family:var(--h);line-height:1.1;letter-spacing:-.02em}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:.6rem 1.3rem;border-radius:99px;border:1px solid var(--blue);background:var(--blue);color:#fff;font:600 .95rem var(--b);cursor:pointer;transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px -10px var(--blue)}.btn.o{background:transparent;border-color:var(--line);color:var(--tx)}.btn.sm{min-height:38px;padding:.3rem 1rem;font-size:.86rem}
+.ribbon{background:var(--bg2);border-bottom:1px solid var(--line);color:var(--mu);font-size:.85rem;text-align:center;padding:.5rem 1rem}.ribbon a{color:var(--bright);text-decoration:underline}
+header{position:sticky;top:0;z-index:10;background:rgba(7,9,19,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:64px}.logo{font:700 1.3rem var(--h)}.logo i{color:var(--vio);font-style:normal}
+.hero{padding:clamp(3.5rem,9vw,7rem) 0 3rem;position:relative}.hero:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:var(--blue);filter:blur(120px);opacity:.25;top:-80px;right:-60px}
+.hero h1{font-size:clamp(2.4rem,6.5vw,4.8rem);max-width:15ch;position:relative}.hero h1 span{color:var(--bright)}.hero p{color:var(--mu);max-width:52ch;margin:1.2rem 0 2rem;font-size:1.1rem;position:relative}
+.tools{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin:2rem 0 1.5rem}.tools input{flex:1;min-width:200px;max-width:340px}
+input{min-height:46px;padding:.6rem 1rem;border-radius:12px;border:1px solid var(--line);background:var(--bg2);color:var(--tx);font:inherit}input:focus{border-color:var(--blue);outline:none;box-shadow:0 0 0 3px rgba(37,99,235,.25)}
+.chip{padding:.45rem 1rem;border-radius:99px;border:1px solid var(--line);background:none;color:var(--mu);font:inherit;cursor:pointer;transition:.2s}.chip:hover{color:var(--tx)}.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem;padding-bottom:5rem}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,border-color .3s}.card:hover{transform:translateY(-5px);border-color:#2b3a78}
+.thumb{height:130px;display:grid;place-items:center;font:700 2.6rem var(--h);color:rgba(255,255,255,.2);background:linear-gradient(135deg,var(--c1),var(--c2))}
+.body{padding:1.3rem;display:flex;flex-direction:column;gap:.5rem;flex:1}.cat{font-size:.8rem;color:var(--bright)}.body h3{font-size:1.3rem}.body p{color:var(--mu);font-size:.94rem;flex:1}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:.6rem;margin-top:.8rem}.meta small{color:var(--mu)}
+.bar{height:6px;border-radius:9px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--vio));transition:width .4s}
+.empty{grid-column:1/-1;text-align:center;color:var(--mu);padding:3rem 0}
+dialog{margin:auto;width:min(860px,94vw);max-height:92vh;overflow:auto;border:1px solid var(--line);border-radius:24px;background:var(--bg);color:var(--tx);padding:0}dialog::backdrop{background:rgba(0,0,0,.75)}
+.dh{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2rem 1.5rem;border-bottom:1px solid var(--line)}.dh h2{font-size:1.5rem}
+.dg{display:grid;grid-template-columns:260px 1fr}.ls{border-right:1px solid var(--line);padding:1rem;display:grid;gap:.4rem;align-content:start}
+.ls button{text-align:left;padding:.65rem .8rem;border-radius:10px;border:1px solid transparent;background:none;color:var(--mu);font:inherit;cursor:pointer;display:flex;gap:.6rem}.ls button:hover{background:var(--bg2)}.ls button.on{background:var(--bg2);border-color:var(--blue);color:var(--tx)}.ls .dn{color:var(--bright)}
+.lc{padding:1.5rem;display:flex;flex-direction:column;gap:1rem}.lc p{color:var(--mu)}.lc .row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:auto}
+footer{border-top:1px solid var(--line);padding:2rem 0;color:var(--mu);font-size:.9rem}footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}footer a{color:var(--bright)}
+@media(max-width:700px){.dg{grid-template-columns:1fr}.ls{border-right:0;border-bottom:1px solid var(--line)}.btn{width:auto}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<div class="ribbon">Concept project by Hassan Adesina, not a real company. <a href="../../">Back to portfolio</a></div>
+<header><div class="wrap nav"><a class="logo" href="#">Learn<i>Loop</i></a><a class="btn sm" href="#courses">Browse courses</a></div></header>
+<main>
+<section class="hero wrap"><h1>Learn a new skill in <span>small steps.</span></h1><p>Short, focused lessons you can finish in minutes. Pick a course, follow the lessons in order, and watch your progress grow.</p><a class="btn" href="#courses">Start learning</a></section>
+<section class="wrap" id="courses"><h2 style="font-size:clamp(1.8rem,4vw,2.6rem)">Courses</h2>
+<div class="tools"><input id="q" type="search" placeholder="Search courses..." aria-label="Search courses"><div id="chips" role="group" aria-label="Filter by topic"></div></div><div class="grid" id="grid" aria-live="polite"></div></section>
+</main>
+<dialog id="dlg" aria-labelledby="dt"><div class="dh"><div><h2 id="dt"></h2><div class="bar" style="width:200px;margin-top:.5rem"><i id="pb"></i></div><small id="pt" style="color:var(--mu)"></small></div><button class="btn o sm" id="cl">Close</button></div><div class="dg"><div class="ls" id="ls"></div><div class="lc" id="lc"></div></div></dialog>
+<footer><div class="wrap"><span>LearnLoop: a concept e-learning interface.</span><span>Designed and built by <a href="../../">Hassan Adesina</a></span></div></footer>
+<script>
+const C=[['web','Web Basics: HTML & CSS','Web Development','Build your first web page and style it.',['What is HTML','Headings and text','Links and images','Styling with CSS'],'#1d4ed8','#4338ca'],
+['js','JavaScript Starter','Web Development','Make pages interactive with simple code.',['Variables','Functions','Events','Updating the page'],'#0e7490','#1d4ed8'],
+['fig','Figma for Beginners','Design','Learn the Figma workspace and design a simple screen.',['The Figma canvas','Frames and shapes','Text and colour','Make a prototype'],'#6d28d9','#2563eb'],
+['n8n','n8n Automation Basics','Automation','Connect apps and automate a repetitive task.',['What is a workflow','Triggers and nodes','Send an email','Save to a sheet'],'#0f766e','#1d4ed8'],
+['gfx','Graphic Design Fundamentals','Design','Layout, colour and type for flyers and social posts.',['Layout basics','Choosing colours','Typography','Export your design'],'#9d174d','#6d28d9'],
+['app','Mobile App UI Basics','Design','Plan and design a clean mobile interface.',['Screen sizes','Navigation','Buttons and forms','Review your design'],'#4338ca','#0e7490']].map(c=>({id:c[0],t:c[1],cat:c[2],d:c[3],ls:c[4],c1:c[5],c2:c[6]}));
+let done={},cat='All',cur=null,li=0;try{done=JSON.parse(localStorage.getItem('ll')||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem('ll',JSON.stringify(done))}catch(e){}},$=s=>document.querySelector(s),cnt=c=>(done[c.id]||[]).length;
+const cats=['All',...new Set(C.map(c=>c.cat))];
+$('#chips').innerHTML=cats.map(c=>`<button class="chip${c==='All'?' on':''}" data-c="${c}">${c}</button>`).join('');
+function grid(){const q=$('#q').value.toLowerCase(),rs=C.filter(c=>(cat==='All'||c.cat===cat)&&(c.t+c.d).toLowerCase().includes(q));
+ $('#grid').innerHTML=rs.length?rs.map(c=>`<article class="card"><div class="thumb" style="--c1:${c.c1};--c2:${c.c2}" aria-hidden="true">${c.t[0]}</div><div class="body"><span class="cat">${c.cat}</span><h3>${c.t}</h3><p>${c.d}</p><div class="bar"><i style="width:${cnt(c)/c.ls.length*100}%"></i></div><div class="meta"><small>${cnt(c)} of ${c.ls.length} lessons</small><button class="btn sm" data-o="${c.id}">${cnt(c)?'Continue':'Start course'}</button></div></div></article>`).join(''):'<p class="empty">No courses match your search.</p>'}
+function view(){const c=cur,d=done[c.id]||[];$('#dt').textContent=c.t;$('#pb').style.width=d.length/c.ls.length*100+'%';$('#pt').textContent=d.length+' of '+c.ls.length+' lessons complete';
+ $('#ls').innerHTML=c.ls.map((l,i)=>`<button data-l="${i}" class="${i===li?'on':''}"><span class="dn">${d.includes(i)?'\u2713':i+1}</span>${l}</button>`).join('');
+ const isD=d.includes(li);$('#lc').innerHTML=`<h3 style="font-size:1.5rem">${c.ls[li]}</h3><p>This is where the lesson content for "${c.ls[li]}" would go: a short explanation, an example, and a small exercise. In a real platform this could include video, notes and quizzes.</p><div class="row"><button class="btn" data-m="1">${isD?'Mark as not done':'Mark as complete'}</button>${li<c.ls.length-1?'<button class="btn o" data-n="1">Next lesson</button>':''}</div>`}
+$('#q').oninput=grid;
+$('#chips').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;cat=b.dataset.c;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b));grid()};
+$('#grid').onclick=e=>{const b=e.target.closest('[data-o]');if(!b)return;cur=C.find(c=>c.id===b.dataset.o);const d=done[cur.id]||[];li=Math.max(0,cur.ls.findIndex((_,i)=>!d.includes(i)));view();$('#dlg').showModal()};
+$('#ls').onclick=e=>{const b=e.target.closest('[data-l]');if(b){li=+b.dataset.l;view()}};
+$('#lc').onclick=e=>{const d=done[cur.id]=done[cur.id]||[];
+ if(e.target.closest('[data-m]')){const k=d.indexOf(li);k<0?d.push(li):d.splice(k,1);save();view();grid()}
+ if(e.target.closest('[data-n]')){li++;view()}};
+$('#cl').onclick=()=>$('#dlg').close();grid();
+</script></body></html>

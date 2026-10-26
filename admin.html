@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Admin | Hassan Adesina</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--bg2:#0d0f16;--line:#1c2030;--tx:#fff;--mu:#a1a1aa;--blue:#2563eb;--bright:#3b82f6;--navy:#0f172a;--red:#ef4444;--f:'Figtree','Segoe UI',system-ui,sans-serif;--h:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}body{background:var(--bg);color:var(--tx);font:400 .98rem/1.55 var(--f)}
+a{color:inherit;text-decoration:none}:focus-visible{outline:2px solid var(--bright);outline-offset:2px}
+h1,h2{font-family:var(--h);letter-spacing:-.02em}h1{font-size:clamp(1.6rem,4vw,2.2rem)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:44px;padding:.5rem 1.1rem;border-radius:12px;border:1px solid var(--line);background:var(--bg2);color:var(--tx);font:600 .92rem var(--f);cursor:pointer;transition:.2s}
+.btn:hover{border-color:var(--bright)}.btn.pri{background:var(--blue);border-color:var(--blue)}.btn.pri:hover{background:var(--bright)}
+.btn.danger{background:var(--red);border-color:var(--red)}.btn.sm{min-height:34px;padding:.2rem .7rem;font-size:.82rem}.btn:disabled{opacity:.5;cursor:wait}
+.side{position:fixed;inset:0 auto 0 0;width:250px;background:var(--navy);border-right:1px solid var(--line);padding:1.2rem;display:flex;flex-direction:column;gap:.2rem;z-index:30;transition:transform .3s}
+.side b{font:700 1.2rem var(--h);margin-bottom:.2rem}.side small{color:var(--mu);margin-bottom:1.2rem}
+.side nav{display:flex;flex-direction:column;gap:.15rem;flex:1;overflow:auto}
+.side nav a{display:flex;justify-content:space-between;padding:.65rem .9rem;border-radius:10px;color:var(--mu)}
+.side nav a:hover{background:rgba(255,255,255,.05);color:var(--tx)}.side nav a.on{background:rgba(37,99,235,.2);color:var(--tx)}
+.badge{background:var(--blue);border-radius:99px;padding:0 .55rem;font-size:.78rem}.side .btn{width:100%;margin-top:.5rem}
+.top{display:none;position:sticky;top:0;z-index:20;background:rgba(5,5,5,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:.6rem 1rem;align-items:center;gap:1rem}
+main{margin-left:250px;padding:clamp(1.2rem,3vw,2.5rem);max-width:1200px}
+.head{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}.sub{color:var(--mu)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin:1.5rem 0 2rem}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.4rem}.card span{color:var(--mu);font-size:.88rem}.card b{display:block;font:700 2.2rem var(--h);color:var(--bright)}
+.tools{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem}
+input,select,textarea{width:100%;min-height:44px;padding:.6rem .9rem;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--tx);font:inherit}
+textarea{resize:vertical}input:focus,select:focus,textarea:focus{border-color:var(--blue);outline:none;box-shadow:0 0 0 3px rgba(37,99,235,.25)}
+input[type=color]{padding:.2rem;width:80px}input[type=file]{padding:.5rem}
+.chip{padding:.4rem .9rem;border-radius:99px;border:1px solid var(--line);background:none;color:var(--mu);cursor:pointer;font:inherit}.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
+table{width:100%;border-collapse:collapse;background:var(--bg2);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+th,td{text-align:left;padding:.8rem 1rem;border-bottom:1px solid var(--line);vertical-align:middle}th{color:var(--mu);font-weight:500;font-size:.85rem}
+tr.unread td:first-child{font-weight:700}.act{display:flex;gap:.4rem;flex-wrap:wrap}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:860px}.f.wide,.form .bar{grid-column:1/-1}.f label{display:block;font-size:.85rem;margin-bottom:.35rem;color:var(--mu)}
+.bar{display:flex;gap:.6rem;flex-wrap:wrap}.img{margin-bottom:.5rem}.img img{max-width:220px;border-radius:12px;border:1px solid var(--line)}
+.empty,.load,.err{text-align:center;padding:3rem 1rem;color:var(--mu)}.err{color:#ff9b9b}
+.spin{width:30px;height:30px;margin:0 auto 1rem;border:3px solid var(--line);border-top-color:var(--bright);border-radius:50%;animation:s .8s linear infinite}@keyframes s{to{transform:rotate(360deg)}}
+dialog{margin:auto;border:1px solid var(--line);border-radius:18px;background:var(--bg2);color:var(--tx);padding:1.5rem;width:min(520px,92vw)}dialog::backdrop{background:rgba(0,0,0,.7)}
+dialog p{margin:.5rem 0}dialog .bar{margin-top:1.2rem;justify-content:flex-end}dialog dl{display:grid;grid-template-columns:110px 1fr;gap:.4rem .8rem}dt{color:var(--mu)}dd{margin:0;word-break:break-word;white-space:pre-wrap}
+#toasts{position:fixed;right:1rem;bottom:1rem;display:grid;gap:.5rem;z-index:99}.toast{background:var(--navy);border:1px solid var(--bright);border-radius:12px;padding:.7rem 1.1rem}.toast.bad{border-color:var(--red)}
+.login{min-height:100vh;display:grid;place-items:center;padding:1rem}.login form{width:min(400px,100%);display:grid;gap:1rem}.login .card{padding:2rem}
+@media(max-width:900px){.side{transform:translateX(-100%)}body.open .side{transform:none}.top{display:flex}main{margin:0}}
+@media(max-width:700px){.form{grid-template-columns:1fr}table,tbody,tr,td{display:block}thead{display:none}tr{background:var(--bg2);border:1px solid var(--line);border-radius:14px;margin-bottom:.8rem;padding:.4rem}
+ td{border:0;padding:.35rem .6rem;display:flex;justify-content:space-between;gap:1rem}td::before{content:attr(data-l);color:var(--mu)}td.act{justify-content:flex-start}td.act::before{display:none}}
+</style></head><body>
+<div id="app"></div><dialog id="dlg"></dialog><div id="toasts" aria-live="polite"></div>
+<script src="../config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+if(!window.SUPABASE_URL||!window.SUPABASE_ANON_KEY){document.body.innerHTML='<p style="padding:2rem">Add your Supabase URL and anon key to config.js first.</p>';throw 0}
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+const toast=(m,bad)=>{const t=document.createElement('div');t.className='toast'+(bad?' bad':'');t.textContent=m;$('#toasts').append(t);setTimeout(()=>t.remove(),4000)};
+const ask=(msg,yes='Delete')=>new Promise(res=>{const d=$('#dlg');d.innerHTML=`<p>${esc(msg)}</p><div class="bar"><button class="btn" value="0">Cancel</button><button class="btn danger" value="1">${yes}</button></div>`;d.onclick=e=>{const b=e.target.closest('button');if(b){d.close();res(b.value==='1')}};d.oncancel=()=>res(false);d.showModal()});
+const fd=v=>v?new Date(v).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'';
+const slug=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+const CATS=['Web Development','UI/UX Design','AI Automation','Graphic Design','Mobile App','Other'],ICONS=['code','pen','bolt','pal','spark','cog','db','mail','user','form'];
+const T=(k,l,t,x)=>({k,l,t,...x});const PUB=['Draft','Published'];
+const R={
+ projects:{n:'Projects',one:'Project',pub:1,q:['title','category'],f:[T('title','Project title','text',{req:1}),T('slug','Slug (auto if empty)'),T('description','Description','area'),T('category','Category','sel',{o:CATS}),T('image_url','Project image','img'),T('project_url','Project URL','url'),T('github_url','GitHub URL','url'),T('tech','Technologies (comma separated)','list'),T('featured','Featured project','bool',{o:['No','Yes']}),T('published','Status','bool',{o:PUB})],cols:[['title','Project'],['category','Category'],['published','Status',v=>v?'Published':'Draft'],['created_at','Date',fd]]},
+ services:{n:'Services',one:'Service',order:1,q:['title'],f:[T('title','Title','text',{req:1}),T('description','Description','area'),T('icon','Icon','sel',{o:ICONS}),T('features','Features (comma separated)','list'),T('published','Status','bool',{o:['Unpublished','Published']})],cols:[['title','Service'],['published','Status',v=>v?'Published':'Unpublished']]},
+ skills:{n:'Skills',one:'Skill',order:1,q:['name','category'],f:[T('name','Skill name','text',{req:1}),T('category','Category','sel',{o:['Web Development','UI/UX Design','AI & Automation','Tools']}),T('icon','Icon (optional)'),T('description','Description','area'),T('published','Status','bool',{o:['Unpublished','Published']})],cols:[['name','Skill'],['category','Category'],['published','Status',v=>v?'Published':'Unpublished']]},
+ hero_titles:{n:'Hero titles',one:'Title',order:1,q:['text'],f:[T('text','Title','text',{req:1}),T('enabled','Status','bool',{o:['Disabled','Enabled']})],cols:[['text','Title'],['enabled','Status',v=>v?'Enabled':'Disabled']]},
+ social_links:{n:'Social links',one:'Link',order:1,q:['label'],f:[T('label','Network','sel',{o:['LinkedIn','Instagram','Facebook','GitHub','WhatsApp','Email','Other'],req:1}),T('url','URL (leave empty to hide)','url')],cols:[['label','Network'],['url','URL']]}};
+const S={
+ profile:{n:'Profile',f:[T('name','Full name'),T('title','Professional title'),T('bio','Short bio','area'),T('about','About me','area'),T('email','Email'),T('whatsapp','WhatsApp (e.g. 07045096215)'),T('location','Location'),T('availability','Availability status'),T('avatar_url','Profile image','img')]},
+ content:{n:'Website content',f:[T('hero_heading','Hero heading'),T('hero_desc','Hero description','area'),T('about_heading','About heading'),T('about','About text','area'),T('cta_heading','Contact CTA heading'),T('cta_text','Contact CTA text','area'),T('footer_text','Footer text')]},
+ settings:{n:'Settings & SEO',f:[T('site_name','Site name'),T('primary_color','Primary colour','color'),T('maintenance','Maintenance mode','bool',{o:['Off','On']}),T('seo_title','SEO title'),T('seo_desc','Meta description','area'),T('og_image','Open Graph image','img'),T('keywords','Keywords')]}};
+const NAV=[['dashboard','Dashboard'],['projects','Projects'],['services','Services'],['skills','Skills'],['messages','Messages'],['profile','Profile'],['content','Content'],['hero','Hero titles'],['social','Social links'],['settings','Settings']];
+const TBL={hero:'hero_titles',social:'social_links'};
+
+const fld=(f,v)=>{const id='f_'+f.k,t=f.t||'text';let h;
+ if(t==='area')h=`<textarea id="${id}" name="${f.k}" rows="4">${esc(v)}</textarea>`;
+ else if(t==='sel')h=`<select id="${id}" name="${f.k}"><option value="">Select</option>${f.o.map(o=>`<option${o===v?' selected':''}>${esc(o)}</option>`).join('')}</select>`;
+ else if(t==='bool')h=`<select id="${id}" name="${f.k}"><option value="false"${!v?' selected':''}>${f.o[0]}</option><option value="true"${v?' selected':''}>${f.o[1]}</option></select>`;
+ else if(t==='list')h=`<input id="${id}" name="${f.k}" value="${esc((v||[]).join(', '))}">`;
+ else if(t==='img')h=`<div class="img">${v?`<img src="${esc(v)}" alt="">`:''}</div><input type="hidden" name="${f.k}" value="${esc(v)}"><input id="${id}" type="file" accept="image/jpeg,image/png,image/webp,image/gif" data-up="${f.k}">`;
+ else h=`<input id="${id}" name="${f.k}" type="${t==='color'?'color':'text'}" value="${esc(v||(t==='color'?'#2563eb':''))}"${f.req?' required':''}>`;
+ return `<div class="f${t==='area'||t==='img'?' wide':''}"><label for="${id}">${f.l}</label>${h}</div>`};
+const collect=(fs,form)=>{const o={};for(const f of fs){const v=form.elements[f.k].value.trim(),t=f.t||'text';
+ if(t==='bool')o[f.k]=v==='true';else if(t==='list')o[f.k]=v.split(',').map(s=>s.trim()).filter(Boolean);
+ else{if(f.req&&!v)throw new Error(f.l+' is required.');if(v&&/url$/.test(f.k)&&!/^(https?:\/\/|mailto:|\/(?!\/))/i.test(v))throw new Error(f.l+' must start with https:// (or / for a page on this site)');o[f.k]=v||null}}return o};
+const upload=async(inp)=>{const f=inp.files[0];if(!f)return;
+ if(!/^image\/(jpeg|png|webp|gif)$/.test(f.type)||f.size>5242880)return toast('Use a JPG, PNG, WebP or GIF under 5 MB.',1);
+ inp.disabled=true;const path=`${location.hash.split('/')[1]||'misc'}/${crypto.randomUUID()}.${f.type.split('/')[1]}`;
+ const {error}=await sb.storage.from('portfolio').upload(path,f,{contentType:f.type});inp.disabled=false;
+ if(error)return toast('Upload failed: '+error.message,1);
+ const url=sb.storage.from('portfolio').getPublicUrl(path).data.publicUrl,box=inp.parentElement;
+ box.querySelector('input[type=hidden]').value=url;box.querySelector('.img').innerHTML=`<img src="${esc(url)}" alt="">`;toast('Image uploaded.')};
+
+let admin=null,mainEl;
+const loading='<div class="load"><div class="spin"></div>Loading…</div>';
+const fail=e=>{mainEl.innerHTML=`<div class="err">Something went wrong: ${esc(e.message||e)}</div>`};
+const setMain=h=>{mainEl.onclick=mainEl.onsubmit=mainEl.onchange=null;mainEl.innerHTML=h};
+function login(msg){$('#app').innerHTML=`<div class="login"><div class="card"><h1>Hassan Adesina</h1><p class="sub" style="margin:.3rem 0 1.5rem">Admin sign in</p><form id="lf"><div class="f"><label for="e" class="sub">Email</label><input id="e" type="email" required autocomplete="username"></div><div class="f"><label for="p" class="sub">Password</label><input id="p" type="password" required autocomplete="current-password"></div><p class="err" id="m" style="padding:0;text-align:left">${esc(msg||'')}</p><button class="btn pri">Sign In</button><button type="button" class="btn" id="fp">Forgot Password?</button></form></div></div>`;
+ $('#lf').onsubmit=async e=>{e.preventDefault();const b=$('button',e.target);b.disabled=true;const {error}=await sb.auth.signInWithPassword({email:$('#e').value.trim(),password:$('#p').value});b.disabled=false;if(error)$('#m').textContent='Invalid email or password.';else{location.hash='#/dashboard';route()}};
+ $('#fp').onclick=async()=>{const em=$('#e').value.trim();if(!em)return $('#m').textContent='Enter your email first.';const {error}=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+location.pathname});$('#m').textContent=error?'Could not send reset email.':'If that account exists, a reset link is on its way.'}}
+function recover(){$('#app').innerHTML=`<div class="login"><div class="card"><h1>New password</h1><form id="rf" style="margin-top:1rem"><input id="np" type="password" minlength="10" required autocomplete="new-password" placeholder="At least 10 characters"><button class="btn pri">Update password</button></form></div></div>`;
+ $('#rf').onsubmit=async e=>{e.preventDefault();const {error}=await sb.auth.updateUser({password:$('#np').value});if(error)return toast(error.message,1);toast('Password updated.');location.hash='#/dashboard';route()}}
+sb.auth.onAuthStateChange(ev=>{if(ev==='PASSWORD_RECOVERY')recover()});
+
+function shell(){if($('#main'))return;$('#app').innerHTML=`<aside class="side" id="side"><b>Hassan Adesina</b><small>Digital Solutions · Admin</small><nav>${NAV.map(([k,l])=>`<a href="#/${k}" data-n="${k}">${l}${k==='messages'?'<span class="badge" id="ub" hidden></span>':''}</a>`).join('')}</nav><a class="btn" href="../" target="_blank" rel="noopener">View Website</a><button class="btn" id="out">Logout</button></aside><div class="top"><button class="btn sm" id="bg" aria-label="Open menu">☰ Menu</button><b>Admin</b></div><main id="main"></main>`;
+ mainEl=$('#main');$('#bg').onclick=()=>document.body.classList.toggle('open');$('#out').onclick=async()=>{await sb.auth.signOut();admin=null;location.hash='#/login';route()}}
+async function unread(){const {count}=await sb.from('messages').select('id',{count:'exact',head:true}).eq('status','unread');const b=$('#ub');if(b){b.textContent=count||0;b.hidden=!count}}
+
+async function route(){
+ const {data:{session}}=await sb.auth.getSession(),h=location.hash.replace(/^#\//,'').split('/'),page=h[0]||'dashboard';
+ if(!session){if(page!=='login')location.hash='#/login';return login()}
+ if(admin!==session.user.id){const {data}=await sb.from('admins').select('user_id').eq('user_id',session.user.id).maybeSingle();if(!data){await sb.auth.signOut();return login('This account is not authorized.')}admin=session.user.id}
+ if(page==='login'){location.hash='#/dashboard';return}
+ shell();document.body.classList.remove('open');$$('[data-n]').forEach(a=>a.classList.toggle('on',a.dataset.n===page));unread();setMain(loading);
+ try{
+  if(page==='dashboard')await dash();else if(page==='messages')await msgs();else if(S[page])await single(page);
+  else{const t=TBL[page]||page;if(!R[t])return setMain('<div class="empty">Page not found.</div>');h[1]?await edit(t,h[1]):await list(t)}
+ }catch(e){fail(e)}}
+addEventListener('hashchange',route);
+
+const rowHtml=(t,r,n)=>{const c=R[t];return `<tr>${c.cols.map(([k,l,fm])=>`<td data-l="${l}">${esc(fm?fm(r[k]):r[k])}</td>`).join('')}<td class="act">${c.order?`<button class="btn sm" data-a="up" data-id="${r.id}" aria-label="Move up">↑</button><button class="btn sm" data-a="down" data-id="${r.id}" aria-label="Move down">↓</button>`:''}<a class="btn sm" href="#/${n}/${r.id}">Edit</a>${t==='projects'?`<a class="btn sm" href="${r.project_url&&/^(https?:|\/(?!\/))/.test(r.project_url)?esc(r.project_url):'../#projects'}" target="_blank" rel="noopener">View</a>`:''}<button class="btn sm danger" data-a="del" data-id="${r.id}">Delete</button></td></tr>`};
+const tblHtml=(t,rows,n)=>`<table><thead><tr>${R[t].cols.map(c=>`<th>${c[1]}</th>`).join('')}<th>Actions</th></tr></thead><tbody>${rows.map(r=>rowHtml(t,r,n)).join('')}</tbody></table>`;
+const emptyHtml=(t,n)=>`<div class="empty"><p>No ${R[t].n.toLowerCase()} yet.</p><br><a class="btn pri" href="#/${n}/new">Create Your First ${R[t].one}</a></div>`;
+function bind(t,rows,reload){mainEl.onclick=async e=>{const b=e.target.closest('[data-a]');if(!b)return;const id=b.dataset.id,i=rows.findIndex(r=>r.id===id);
+ if(b.dataset.a==='del'){if(!await ask(`Are you sure you want to delete this ${R[t].one.toLowerCase()}?`))return;const {error}=await sb.from(t).delete().eq('id',id);if(error)return toast(error.message,1);toast('Deleted.');reload()}
+ else{const j=i+(b.dataset.a==='up'?-1:1);if(j<0||j>=rows.length)return;[rows[i],rows[j]]=[rows[j],rows[i]];const rs=await Promise.all(rows.map((r,k)=>sb.from(t).update({sort_order:k+1}).eq('id',r.id)));if(rs.some(r=>r.error))toast('Reorder failed.',1);reload()}}}
+async function list(t){const c=R[t],n=Object.keys(TBL).find(k=>TBL[k]===t)||t;
+ const {data,error}=await sb.from(t).select('*').order(c.order?'sort_order':'created_at',{ascending:!!c.order});if(error)return fail(error);
+ setMain(`<div class="head"><div><h1>${c.n}</h1></div><a class="btn pri" href="#/${n}/new">+ Add ${c.one}</a></div>${data.length?`<div class="tools"><input id="q" type="search" placeholder="Search…" aria-label="Search" style="max-width:320px"></div><div id="tb">${tblHtml(t,data,n)}</div>`:emptyHtml(t,n)}`);
+ if(!data.length)return;const draw=()=>{const q=$('#q').value.toLowerCase(),rs=data.filter(r=>!q||c.q.some(k=>String(r[k]||'').toLowerCase().includes(q)));$('#tb').innerHTML=rs.length?tblHtml(t,rs,n):'<div class="empty">No matches.</div>'};
+ $('#q').oninput=draw;bind(t,data,route)}
+async function edit(t,id){const c=R[t],n=Object.keys(TBL).find(k=>TBL[k]===t)||t;let row={published:false,enabled:true,featured:false};
+ if(id!=='new'){const {data,error}=await sb.from(t).select('*').eq('id',id).single();if(error)return fail(error);row=data}
+ const isNew=id==='new';
+ setMain(`<div class="head"><h1>${isNew?'Add':'Edit'} ${c.one}</h1></div><form class="form" novalidate>${c.f.map(f=>fld(f,row[f.k])).join('')}<div class="bar">${c.pub?`<button class="btn" data-pub="false">Save Draft</button><button class="btn pri" data-pub="true">${isNew?'Publish Project':'Update Project'}</button>`:`<button class="btn pri">${isNew?'Save':'Save Changes'}</button>`}<a class="btn" href="#/${n}">Cancel</a>${isNew?'':`<button type="button" class="btn danger" id="del">Delete ${c.one}</button>`}</div></form>`);
+ mainEl.onchange=e=>{if(e.target.dataset.up)upload(e.target)};
+ if(c.pub)$('[name=title]').oninput=e=>{const s=$('[name=slug]');if(isNew&&!s.dataset.t)s.value=slug(e.target.value)};
+ const sl=$('[name=slug]');if(sl)sl.oninput=()=>sl.dataset.t=1;
+ if(!isNew)$('#del').onclick=async()=>{if(!await ask(`Are you sure you want to delete this ${c.one.toLowerCase()}?`))return;const {error}=await sb.from(t).delete().eq('id',id);if(error)return toast(error.message,1);toast('Deleted.');location.hash='#/'+n};
+ mainEl.onsubmit=async e=>{e.preventDefault();const btns=$$('button',e.target);btns.forEach(b=>b.disabled=true);
+  try{const v=collect(c.f,e.target);if(c.pub){v.published=e.submitter.dataset.pub==='true';v.slug=slug(v.slug||v.title);if(!v.slug)throw new Error('Slug is required.')}
+   let r;if(isNew){if(c.order){const {data}=await sb.from(t).select('sort_order').order('sort_order',{ascending:false}).limit(1);v.sort_order=(data?.[0]?.sort_order||0)+1}r=await sb.from(t).insert(v)}else r=await sb.from(t).update(v).eq('id',id);
+   if(r.error)throw r.error;toast('Saved.');location.hash='#/'+n}
+  catch(err){toast(err.message.includes('duplicate')?'That slug is already used.':err.message,1);btns.forEach(b=>b.disabled=false)}}}
+async function single(k){const s=S[k],get=async()=>(await sb.from('site_settings').select('data').eq('id',1).maybeSingle());
+ const {data,error}=await get();if(error)return fail(error);const d=data?.data||{};
+ setMain(`<div class="head"><div><h1>${s.n}</h1><p class="sub">Changes appear on the public site after saving.</p></div></div><form class="form" novalidate>${s.f.map(f=>fld(f,d[f.k])).join('')}<div class="bar"><button class="btn pri">Save Changes</button></div></form>`);
+ mainEl.onchange=e=>{if(e.target.dataset.up)upload(e.target)};
+ mainEl.onsubmit=async e=>{e.preventDefault();const b=$('button',e.target);b.disabled=true;
+  try{const v=collect(s.f,e.target);const cur=(await get()).data?.data||{};const {error}=await sb.from('site_settings').upsert({id:1,data:{...cur,...v}});if(error)throw error;toast('Saved.')}catch(err){toast(err.message,1)}b.disabled=false}}
+async function dash(){const cnt=(t,f)=>{const q=sb.from(t).select('id',{count:'exact',head:true});return f?f(q):q};
+ const [a,b,m,s,rec]=await Promise.all([cnt('projects'),cnt('projects',q=>q.eq('published',true)),cnt('messages',q=>q.eq('status','unread')),cnt('services'),sb.from('projects').select('*').order('created_at',{ascending:false}).limit(5)]);
+ const err=[a,b,m,s,rec].find(x=>x.error);if(err)return fail(err.error);
+ setMain(`<div class="head"><div><h1>Welcome back, Hassan</h1><p class="sub">Manage your portfolio from one place.</p></div><a class="btn pri" href="#/projects/new">+ Add Project</a></div><div class="stats">${[['Total Projects',a],['Published Projects',b],['Unread Messages',m],['Services',s]].map(([l,x])=>`<div class="card"><span>${l}</span><b>${String(x.count??0).padStart(2,'0')}</b></div>`).join('')}</div><h2 style="margin-bottom:1rem">Recent projects</h2>${rec.data.length?tblHtml('projects',rec.data,'projects'):emptyHtml('projects','projects')}`);
+ bind('projects',rec.data,route)}
+
+async function msgs(){const {data,error}=await sb.from('messages').select('*').order('created_at',{ascending:false});if(error)return fail(error);
+ let flt='all';const ST=['unread','read','replied','archived'];
+ setMain(`<div class="head"><h1>Messages</h1></div><div class="tools"><input id="q" type="search" placeholder="Search sender, email or project type…" aria-label="Search messages" style="max-width:340px">${['all',...ST].map(f=>`<button class="chip${f==='all'?' on':''}" data-f="${f}">${f[0].toUpperCase()+f.slice(1)}</button>`).join('')}</div><div id="tb"></div>`);
+ const set=async(id,status)=>{const {error}=await sb.from('messages').update({status}).eq('id',id);if(error)return toast(error.message,1);data.find(m=>m.id===id).status=status;unread();draw()};
+ const draw=()=>{const q=$('#q').value.toLowerCase(),rs=data.filter(m=>(flt==='all'||m.status===flt)&&(!q||[m.name,m.email,m.project_type].some(x=>String(x||'').toLowerCase().includes(q))));
+  $('#tb').innerHTML=!data.length?'<div class="empty">No messages yet.</div>':!rs.length?'<div class="empty">No matches.</div>':`<table><thead><tr><th>Sender</th><th>Email</th><th>Project type</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead><tbody>${rs.map(m=>`<tr class="${m.status}"><td data-l="Sender">${esc(m.name)}</td><td data-l="Email">${esc(m.email)}</td><td data-l="Project type">${esc(m.project_type||'—')}</td><td data-l="Date">${fd(m.created_at)}</td><td data-l="Status">${m.status}</td><td class="act"><button class="btn sm" data-a="view" data-id="${m.id}">View</button><button class="btn sm" data-a="${m.status==='unread'?'read':'unread'}" data-id="${m.id}">${m.status==='unread'?'Mark read':'Mark unread'}</button><button class="btn sm" data-a="archived" data-id="${m.id}">Archive</button><button class="btn sm danger" data-a="del" data-id="${m.id}">Delete</button></td></tr>`).join('')}</tbody></table>`};
+ draw();$('#q').oninput=draw;
+ mainEl.onclick=async e=>{const c=e.target.closest('.chip');if(c){flt=c.dataset.f;$$('.chip').forEach(x=>x.classList.toggle('on',x===c));return draw()}
+  const b=e.target.closest('[data-a]');if(!b)return;const id=b.dataset.id,m=data.find(x=>x.id===id),a=b.dataset.a;
+  if(a==='del'){if(!await ask('Are you sure you want to delete this message?'))return;const {error}=await sb.from('messages').delete().eq('id',id);if(error)return toast(error.message,1);data.splice(data.indexOf(m),1);toast('Deleted.');unread();draw()}
+  else if(a==='view'){if(m.status==='unread')set(id,'read');const d=$('#dlg');d.innerHTML=`<h2>${esc(m.name)}</h2><dl><dt>Email</dt><dd><a href="mailto:${encodeURIComponent(m.email)}" style="color:var(--bright)">${esc(m.email)}</a></dd><dt>Phone</dt><dd>${esc(m.phone||'—')}</dd><dt>Project</dt><dd>${esc(m.project_type||'—')}</dd><dt>Budget</dt><dd>${esc(m.budget||'—')}</dd><dt>Received</dt><dd>${fd(m.created_at)}</dd><dt>Message</dt><dd>${esc(m.message)}</dd></dl><div class="bar"><button class="btn" value="replied">Mark replied</button><button class="btn" value="unread">Mark unread</button><button class="btn pri" value="x">Close</button></div>`;
+   d.onclick=ev=>{const x=ev.target.closest('button');if(!x)return;d.close();if(x.value!=='x')set(id,x.value)};d.showModal()}
+  else set(id,a)}}
+route();
+</script></body></html>
